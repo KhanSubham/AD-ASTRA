@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD ASTRA Store - Astrophysics Merch</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+     <link rel="stylesheet" href="/static/style.css">
+     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jura:wght@400;600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <span>AD ASTRA</span>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/#explore">Explore</a>
+            <a href="/store" class="active highlight-link">Our Store</a>
+        </nav>
+        <a href="/cart" style="text-decoration: none; color: inherit;">
+            <div class="cart-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </a>
+    </header>
+
+    <main class="store-main">
+        <div class="store-header">
+            <h1>GEAR FOR THE <span class="accent-text">COSMIC EXPLORER</span></h1>
+            <p>Apparel, instruments, and artifacts inspired by astrophysics.</p>
+        </div>
+
+        <div class="product-grid">
+            <p style="text-align: center; width: 100%; color: var(--text-muted); font-family: var(--font-heading);">
+                <i class="fa-solid fa-circle-notch fa-spin"></i> Loading cosmic gear from server...
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span>AD ASTRA</span>
+                </div>
+                <p>Uncover the mysteries of the universe.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast">Item added to cart!</div>
+
+    <!-- <script src="script.js"></script> -->
+     <script src="/static/script.js"></script>
+</body>
+
+</html>

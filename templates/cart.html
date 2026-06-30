@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD ASTRA | Cargo Bay</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+     <link rel="stylesheet" href="/static/style.css">
+     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+ 
+    <header>
+        <div class="logo"><span>AD ASTRA</span></div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/store">Our Store</a>
+        </nav>
+        <div class="cart-icon active">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <main class="store-main">
+        <div class="store-header">
+            <h1>YOUR <span class="accent-text">CARGO BAY</span></h1>
+            <p>Review your astrophysics gear before checkout.</p>
+        </div>
+
+        <div class="cart-layout">
+            <div class="cart-items-container" id="cart-items"></div>
+
+            <div class="cart-summary-box">
+                <h3>Transmission Summary</h3>
+                <hr>
+                <div class="summary-row">
+                    <span>Shipping:</span>
+                    <span>Calculated at warp</span>
+                </div>
+                <div class="summary-row grand-total">
+                    <span>Total:</span>
+                    <span id="cart-total" class="accent-text">$0.00</span>
+                </div>
+                <button class="btn-checkout" onclick="alert('Checkout module initiating! (This is where Stripe or PayPal would go)')">INITIATE LAUNCH (CHECKOUT)</button>
+            </div>
+        </div>
+    </main>
+    <!-- <script src="script.js"></script> -->
+     <script src="/static/script.js"></script>
+</body>
+</html>

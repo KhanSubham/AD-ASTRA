@@ -1,0 +1,937 @@
+/* --- Base Variables & Reset --- */
+:root {
+    --bg-dark: #05050A;
+    --text-main: #E2E8F0;
+    --text-muted: #94A3B8;
+    --accent: #E8D354;
+    --accent-light: #FBEA8C;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+    
+    --font-heading: 'Jura', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: radial-gradient(circle at 50% 10%, rgba(20, 20, 60, 0.5) 0%, var(--bg-dark) 50%);
+}
+
+h1, h2, h3, h4, .logo {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a {
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+.subtitle {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* --- Common UI Elements --- */
+.btn-outline {
+    display: inline-block;
+    padding: 10px 24px;
+    border: 1px solid var(--text-main);
+    border-radius: 30px;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn-outline:hover {
+    background: gray;
+    color: black;
+}
+
+.accent-text {
+    color: var(--accent);
+}
+
+/* --- Header --- */
+/* --- Header --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    
+    /* CHANGE THESE LINES */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: transparent; /* Ensures no background blocks the image */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* --- Hero Section --- */
+/* --- Hero Section --- */
+/* --- Hero Section --- */
+.hero {
+    background-image: linear-gradient(rgba(5, 5, 10, 0.6), rgba(5, 5, 10, 0.8)), url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
+    padding: 140px 20px 0;
+    
+    /* These 3 lines are crucial for the Earth to sit right */
+    position: relative; 
+    min-height: 100vh; 
+    overflow: hidden;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+/* --- Fixed Hero Earth Section --- */
+/* --- Smaller Hero Earth Section --- */
+/* --- Smaller Hero Earth Section (Perfectly Fitted) --- */
+.hero-earth {
+    background-image: 
+        /* Gradient fade to blend into the dark background */
+        linear-gradient(to bottom, rgba(5, 5, 10, 0) 30%, var(--bg-dark) 100%), 
+        /* New Image: A brilliant, centered view of Earth */
+        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80');
+    
+    background-size: cover;
+    /* THIS IS THE FIX: Centers the globe perfectly inside the dome */
+    background-position: center center;  
+    width: 100%;
+    max-width: 700px; 
+    height: 220px;      
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); 
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    box-shadow: 0 -15px 50px rgba(30, 144, 255, 0.2);
+    z-index: 10;
+}
+
+/* --- Partners Section --- */
+.partners {
+    text-align: center;
+    padding: 60px 5%;
+}
+
+.partners h2 {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.logo-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    font-size: 2rem;
+    color: var(--text-muted);
+}
+
+/* --- Features Section --- */
+.features {
+    text-align: center;
+    padding: 80px 5%;
+}
+
+.features h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* --- Map Section --- */
+.map-section {
+    text-align: center;
+    padding: 80px 5%;
+}
+
+.map-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.map-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 40px auto 0;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stats-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: left;
+    flex: 1;
+    min-width: 250px;
+}
+
+.left-stats h3 {
+    font-size: 2.5rem;
+    color: var(--accent);
+}
+
+.left-stats hr {
+    border: none;
+    border-top: 1px solid var(--card-border);
+    margin: 20px 0;
+}
+
+.left-stats ul, .right-stats ol {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.left-stats li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.left-stats li i {
+    color: var(--accent);
+    width: 20px;
+}
+
+.right-stats h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--text-muted);
+}
+
+/* --- Enhanced Fascinating Phenomena Box --- */
+.right-stats {
+    counter-reset: phenomena-counter; /* Sets up the automatic numbering */
+}
+
+.phenomena-list {
+    list-style: none; /* Removes default messy browser numbers */
+    padding: 0;
+    margin-top: 15px;
+}
+
+.phenomena-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 8px;
+    counter-increment: phenomena-counter; /* Counts up for each item */
+}
+
+/* This styles the numbers specifically */
+.phenomena-list li::before {
+    content: counter(phenomena-counter) ".";
+    color: var(--accent);
+    font-weight: bold;
+    font-family: var(--font-heading);
+    width: 25px; /* Ensures double digits align perfectly with single digits */
+    flex-shrink: 0;
+}
+
+.phenomenon-name {
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.95rem;
+    flex: 1; /* Pushes the description all the way to the right */
+}
+
+.phenomenon-desc {
+    color: var(--text-muted);
+    text-align: right;
+    font-size: 0.85rem;
+    white-space: nowrap; /* Keeps the descriptions on a single neat line */
+}
+
+.right-stats li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 5px;
+}
+
+.globe-container {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    min-width: 300px;
+}
+
+.globe-img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(30, 144, 255, 0.3);
+}
+
+/* --- Process Timeline Section --- */
+.process {
+    text-align: center;
+    padding: 80px 5%;
+}
+
+.process h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 60px auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: var(--card-border);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+    width: 100%;
+}
+
+.timeline-item.right {
+    flex-direction: row;
+}
+
+.timeline-item.left {
+    flex-direction: row;
+}
+
+.timeline-icon {
+    width: 40%;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--accent);
+}
+
+.timeline-content {
+    width: 40%;
+    text-align: left;
+}
+
+.timeline-item.left .timeline-content {
+    text-align: right;
+}
+
+.timeline-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.timeline-number {
+    width: 40px;
+    height: 40px;
+    background: var(--bg-dark);
+    border: 1px solid var(--text-muted);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* --- Testimonials Section --- */
+.testimonials {
+    text-align: center;
+    padding: 80px 5%;
+}
+
+.testimonials h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.testimonials .btn-outline {
+    margin-bottom: 50px;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: left;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.user-info img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info h4 {
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.user-info span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.testimonial-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* --- Footer --- */
+footer {
+    border-top: 1px solid var(--card-border);
+    padding: 60px 5% 20px;
+    margin-top: 50px;
+    background: linear-gradient(to bottom, var(--bg-dark), #0a0a1a);
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.footer-brand {
+    max-width: 250px;
+}
+
+.footer-brand .logo {
+    margin-bottom: 15px;
+}
+
+.footer-brand p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.link-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.link-col h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.link-col a {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.link-col a:hover {
+    color: var(--text-main);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.socials {
+    display: flex;
+    gap: 20px;
+}
+
+.socials a {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+
+.socials a:hover {
+    color: var(--text-main);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item, .timeline-item.right, .timeline-item.left {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 60px;
+    }
+    
+    .timeline-icon, .timeline-content {
+        width: 100%;
+        text-align: left !important;
+    }
+    
+    .timeline-number {
+        left: 20px;
+    }
+    
+    .timeline-icon {
+        margin-bottom: 15px;
+        height: auto;
+        padding: 20px;
+    }
+    
+    .footer-links {
+        gap: 30px;
+    }
+}
+
+/* --- NEW STYLES FOR ASTROPHYSICS MAIN PAGE & STORE --- */
+
+nav a.active {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+}
+
+.highlight-link {
+    color: var(--accent-light);
+    font-weight: 600;
+}
+
+/* Fact Generator Box */
+.fact-generator-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Store Specific Styles */
+.store-main {
+    padding: 80px 5%;
+}
+
+.store-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.store-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+.cart-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    color: var(--text-main);
+}
+
+#cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: var(--accent);
+    color: var(--bg-dark);
+    font-size: 0.8rem;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-body);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(232, 211, 84, 0.1);
+}
+
+.product-image {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.product-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-family: var(--font-heading);
+}
+
+.product-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.btn-buy {
+    background: var(--accent);
+    color: var(--bg-dark);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: var(--font-body);
+}
+
+.btn-buy:hover {
+    background: var(--accent-light);
+}
+
+/* Toast Notification for Cart */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--accent);
+    color: var(--bg-dark);
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- CART PAGE STYLES --- */
+.cart-layout {
+    display: flex;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.cart-items-container {
+    flex: 2;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 15px;
+    padding: 20px;
+    min-width: 300px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-details h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.cart-item-total {
+    text-align: right;
+}
+
+.btn-remove {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    transition: color 0.3s;
+}
+
+.btn-remove:hover {
+    color: #f87171;
+}
+
+.cart-summary-box {
+    flex: 1;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 15px;
+    padding: 30px;
+    height: fit-content;
+    min-width: 300px;
+}
+
+.cart-summary-box hr {
+    border: none;
+    border-top: 1px solid var(--card-border);
+    margin: 15px 0;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: var(--text-muted);
+}
+
+.grand-total {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--text-main);
+    margin-top: 20px;
+}
+
+.btn-checkout {
+    width: 100%;
+    background: var(--accent);
+    color: var(--bg-dark);
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s;
+    letter-spacing: 1px;
+}
+
+.btn-checkout:hover {
+    background: var(--accent-light);
+}
+
+/* Make the cart icon clickable! */
+.cart-icon {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.cart-icon:hover {
+    transform: scale(1.1);
+}

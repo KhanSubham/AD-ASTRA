@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD ASTRA - Astrophysics Explorer</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+     <link rel="stylesheet" href="/static/style.css">
+     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jura:wght@400;600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <span>AD ASTRA</span>
+        </div>
+        <nav>
+            <a href="/" class="active">Home</a>
+            <a href="#explore">Explore</a>
+            <a href="/store" class="highlight-link">Our Store</a>
+            <a href="#about">About</a>
+        </nav>
+        <a href="#" class="btn-outline">Login</a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Discover Our Space:<br><span class="accent-text">EXPLORE THE UNIVERSE!</span></h1>
+            <p>Unraveling the Cosmos: Astrophysics Data & Knowledge at Your Fingertips.</p>
+            <a href="/store" class="btn-outline">Shop Astrophysics Merch</a>
+            <div class="hero-earth"></div>
+        </section>
+
+        <section class="features" id="explore">
+            <h2>WONDERS OF THE COSMOS</h2>
+            <p class="subtitle">Dive deep into the mechanics of the universe, from icy rocks to entire galaxies.</p>
+
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-meteor"></i></div>
+                    <h3>Comets & Asteroids</h3>
+                    <p>Primordial ice and rock left over from the formation of our solar system. These wanderers offer
+                        clues to the origins of our planetary neighborhood.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-star-half-stroke"></i></div>
+                    <h3>Constellations</h3>
+                    <p>Patterns of stars that have guided navigators for millennia. Beyond mythology, they represent
+                        specific regions of the celestial sphere mapping deep-space objects.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                    <h3>Planetary Science</h3>
+                    <p>From gas giants to terrestrial worlds, discover the diverse geology, atmospheres, and potential
+                        for life on planets within and beyond our solar system.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h2>COSMIC PERSPECTIVE</h2>
+            <p class="subtitle">Mind-bending facts about our universe.</p>
+
+            <div class="map-layout">
+                <div class="stats-box left-stats">
+                    <h3 id="random-fact-title">13.8 Billion</h3>
+                    <p>Years since the Big Bang</p>
+                    <hr>
+                    <h4>Our Solar System:</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-sun"></i> 1 Star (The Sun)</li>
+                        <li><i class="fa-solid fa-earth-europe"></i> 8 Major Planets</li>
+                        <li><i class="fa-solid fa-moon"></i> 290+ Known Moons</li>
+                        <li><i class="fa-solid fa-bowling-ball"></i> 1.3M+ Asteroids</li>
+                    </ul>
+                </div>
+
+                <div class="globe-container">
+                    <div class="fact-generator-box">
+                        <i class="fa-solid fa-user-astronaut fa-3x"
+                            style="color: var(--accent); margin-bottom: 20px;"></i>
+                        <h3 style="margin-bottom: 10px;">Awesome Fact Generator</h3>
+                        <p id="fact-display" style="min-height: 80px; color: var(--text-muted);">Click the button below
+                            to discover a mind-blowing astrophysics fact!</p>
+                        <button class="btn-outline" onclick="generateFact()" style="margin-top: 15px;">Give me a
+                            fact!</button>
+                    </div>
+                </div>
+
+                <div class="stats-box right-stats">
+                    <h4>Fascinating Phenomena:</h4>
+                    <ol class="phenomena-list">
+                        <li><span class="phenomenon-name">Black Holes</span> <span class="phenomenon-desc">Infinite
+                                density</span></li>
+                        <li><span class="phenomenon-name">Supernovas</span> <span class="phenomenon-desc">Stellar
+                                explosions</span></li>
+                        <li><span class="phenomenon-name">Quasars</span> <span class="phenomenon-desc">Active
+                                nuclei</span></li>
+                        <li><span class="phenomenon-name">Dark Matter</span> <span class="phenomenon-desc">85% of
+                                mass</span></li>
+                        <li><span class="phenomenon-name">Exoplanets</span> <span class="phenomenon-desc">Alien
+                                worlds</span></li>
+                        <li><span class="phenomenon-name">Pulsars</span> <span class="phenomenon-desc">Spinning
+                                stars</span></li>
+                        <li><span class="phenomenon-name">Nebulae</span> <span class="phenomenon-desc">Stellar
+                                nurseries</span></li>
+                        <li><span class="phenomenon-name">Gamma Bursts</span> <span class="phenomenon-desc">Brightest
+                                flashes</span></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="process">
+            <h2>THE LIFE CYCLE OF A STAR</h2>
+            <p class="subtitle">How celestial bodies are born, live, and die.</p>
+
+            <div class="timeline">
+                <div class="timeline-item right">
+                    <div class="timeline-icon"><i class="fa-solid fa-cloud"></i></div>
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>STELLAR NURSERY (NEBULA)</h3>
+                        <p>Stars begin their lives in massive clouds of dust and gas called nebulae. Gravity slowly
+                            pulls this material together, creating dense, hot cores.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>MAIN SEQUENCE</h3>
+                        <p>Once nuclear fusion ignites in the core, the star stabilizes. It spends the majority of its
+                            life fusing hydrogen into helium, just like our Sun is doing right now.</p>
+                    </div>
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-icon"><i class="fa-solid fa-sun"></i></div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-icon"><i class="fa-solid fa-expand"></i></div>
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>RED GIANT PHASE</h3>
+                        <p>As the star exhausts its hydrogen, the core contracts while the outer layers expand and cool,
+                            turning the star into a massive, glowing red giant.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>STELLAR REMNANT</h3>
+                        <p>Depending on its mass, the star will end its life violently as a supernova, leaving behind a
+                            dense White Dwarf, a spinning Neutron Star, or a gravitational Black Hole.</p>
+                    </div>
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-icon"><i class="fa-solid fa-circle-dot"></i></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span>AD ASTRA</span>
+                </div>
+                <p>Uncover the mysteries of the universe.</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="link-col">
+                    <h4>Explore</h4>
+                    <a href="#">The Solar System</a>
+                    <a href="#">Deep Space</a>
+                    <a href="#">Quantum Mechanics</a>
+                </div>
+                <div class="link-col">
+                    <h4>Shop</h4>
+                    <a href="store.html">Apparel</a>
+                    <a href="store.html">Telescopes</a>
+                    <a href="store.html">Posters & Art</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- <script src="script.js"></script> -->
+     <script src="/static/script.js"></script>
+</body>
+
+</html>
