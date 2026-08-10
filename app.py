@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 import mysql.connector
@@ -5,15 +6,14 @@ import mysql.connector
 app = Flask(__name__)
 CORS(app) 
 
-# Database connection configuration
+# Secure database configuration using environment variables
 db_config = {
-    'host': 'localhost',
-    'user': 'root', 
-    'password': 'Ladduayu@786', 
-    'database': 'ad_astra'
+    'host': os.environ.get('DB_HOST', 'localhost'),
+    'port': int(os.environ.get('DB_PORT', 3306)),
+    'user': os.environ.get('DB_USER', 'root'), 
+    'password': os.environ.get('DB_PASSWORD', 'Ladduayu@786'), 
+    'database': os.environ.get('DB_NAME', 'ad_astra')
 }
-
-# --- PAGE ROUTES (Serving HTML) ---
 
 @app.route('/')
 def home():
@@ -26,8 +26,6 @@ def store():
 @app.route('/cart')
 def cart():
     return render_template('cart.html')
-
-# --- API ROUTES (Serving Data) ---
 
 @app.route('/api/products', methods=['GET'])
 def get_products():
@@ -43,5 +41,4 @@ def get_products():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    print("🚀 AD ASTRA Full-Stack Server starting on port 5000...")
     app.run(debug=True, port=5000)
