@@ -1,19 +1,21 @@
 import os
 from flask import Flask, jsonify, render_template
 from flask_cors import CORS
-import mysql.connector
+import pymysql
 
 app = Flask(__name__)
-CORS(app) 
+CORS(app)
 
-# Secure database configuration using environment variables
-db_config = {
-    'host': os.environ.get('DB_HOST', 'localhost'),
-    'port': int(os.environ.get('DB_PORT', 3306)),
-    'user': os.environ.get('DB_USER', 'root'), 
-    'password': os.environ.get('DB_PASSWORD', 'Ladduayu@786'), 
-    'database': os.environ.get('DB_NAME', 'ad_astra')
-}
+def get_db_connection():
+    return pymysql.connect(
+        host=os.environ.get('DB_HOST', 'localhost'),
+        port=int(os.environ.get('DB_PORT', 3306)),
+        user=os.environ.get('DB_USER', 'root'),
+        password=os.environ.get('DB_PASSWORD', 'Ladduayu@786'),
+        database=os.environ.get('DB_NAME', 'ad_astra'),
+        cursorclass=pymysql.cursors.DictCursor,
+        connect_timeout=10
+    )
 
 @app.route('/')
 def home():
@@ -30,14 +32,14 @@ def cart():
 @app.route('/api/products', methods=['GET'])
 def get_products():
     try:
-        conn = mysql.connector.connect(**db_config)
-        cursor = conn.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM products")
-        products = cursor.fetchall()
-        cursor.close()
+        conn = get_db_connection()
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM products")
+            products = cursor.fetchall()
         conn.close()
         return jsonify(products)
     except Exception as e:
+        print("DATABASE ERROR LOG:", str(e))  # Prints exact database error in Vercel Logs
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
