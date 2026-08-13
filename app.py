@@ -7,12 +7,29 @@ app = Flask(__name__)
 CORS(app)
 
 def get_db_connection():
+    # Retrieve env variables
+    db_host = os.environ.get('DB_HOST')
+    db_port = int(os.environ.get('DB_PORT', 3306))
+    db_user = os.environ.get('DB_USER')
+    db_pass = os.environ.get('DB_PASSWORD')
+    db_name = os.environ.get('DB_NAME')
+
+    # Print debug info to Vercel Logs
+    print(f"--- DEBUG DB CONFIG ---")
+    print(f"DB_HOST: {db_host}")
+    print(f"DB_USER: {db_user}")
+    print(f"DB_NAME: {db_name}")
+    print(f"-----------------------")
+
+    if not db_host or db_host == 'localhost':
+        raise ValueError(f"Invalid DB_HOST received: '{db_host}'. Check Vercel Environment Variables!")
+
     return pymysql.connect(
-        host=os.environ.get('DB_HOST', 'localhost'),
-        port=int(os.environ.get('DB_PORT', 3306)),
-        user=os.environ.get('DB_USER', 'root'),
-        password=os.environ.get('DB_PASSWORD', 'Ladduayu@786'),
-        database=os.environ.get('DB_NAME', 'ad_astra'),
+        host=db_host,
+        port=db_port,
+        user=db_user,
+        password=db_pass,
+        database=db_name,
         cursorclass=pymysql.cursors.DictCursor,
         connect_timeout=10
     )
@@ -39,7 +56,7 @@ def get_products():
         conn.close()
         return jsonify(products)
     except Exception as e:
-        print("DATABASE ERROR LOG:", str(e))  # Prints exact database error in Vercel Logs
+        print("DATABASE ERROR LOG:", str(e))
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
